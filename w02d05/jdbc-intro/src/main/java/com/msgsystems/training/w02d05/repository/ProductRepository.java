@@ -2,12 +2,14 @@ package com.msgsystems.training.w02d05.repository;
 
 import com.msgsystems.training.w02d05.model.Product;
 import org.h2.tools.Server;
+import org.jooq.lambda.Unchecked;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 
 public class ProductRepository {
 
@@ -83,16 +85,9 @@ public class ProductRepository {
     }
 
     private void closeResources(final ResultSet resultSet, final Statement statement) {
-        try {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-
-            if (statement != null) {
-                statement.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Optional.ofNullable(resultSet)
+                .ifPresent(Unchecked.consumer(ResultSet::close));
+        Optional.ofNullable(statement)
+                .ifPresent(Unchecked.consumer(Statement::close));
     }
 }
