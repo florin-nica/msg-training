@@ -8,6 +8,7 @@ import com.msgsystems.training.w02d05.service.ProductService;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -40,7 +41,8 @@ public class JPAMain {
         productCRUD();
         // storeCRUD();
 
-        criteriaAPISample();
+        // jpqlSample();
+        // criteriaAPISample();
 
         closeEntityManagerObjects();
     }
@@ -66,6 +68,16 @@ public class JPAMain {
         // productRepository.deleteProduct(savedProduct);
 
         System.out.println("There is no product with the ID 1 - " + (productRepository.getProduct(1) == null));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void jpqlSample() {
+        final Query query = entityManager.createNamedQuery(Product.GET_PRODUCTS_BY_NAME, Product.class)
+                                         .setParameter("name", "an updated name");
+        final List<Product> products = (List<Product>) query.getResultList();
+
+        System.out.println("Found the following products:");
+        products.forEach(product -> System.out.println("\t" + product.getId() + ", " + product.getName()));
     }
 
     private static void criteriaAPISample() {

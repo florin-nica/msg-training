@@ -7,13 +7,24 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
+import static com.msgsystems.training.w02d05.model.Product.GET_PRODUCTS_BY_NAME;
+
 @Entity
 @Table(name = "PRODUCT")
+@NamedQuery(
+        name = GET_PRODUCTS_BY_NAME,
+        query = "SELECT product " +
+                "FROM Product product " +
+                "WHERE product.name = :name"
+)
 public class Product implements Serializable {
+
+    public static final String GET_PRODUCTS_BY_NAME = "Product.getByName";
 
     @Id
     @GeneratedValue
