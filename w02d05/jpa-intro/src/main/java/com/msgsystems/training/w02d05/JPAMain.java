@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Level;
 
@@ -106,12 +107,7 @@ public class JPAMain {
     }
 
     private static void closeEntityManagerObjects() {
-        if (entityManager != null) {
-            entityManager.close();
-        }
-
-        if (entityManagerFactory != null) {
-            entityManagerFactory.close();
-        }
+        Optional.ofNullable(entityManager).ifPresent(EntityManager::close);
+        Optional.ofNullable(entityManagerFactory).ifPresent(EntityManagerFactory::close);
     }
 }
