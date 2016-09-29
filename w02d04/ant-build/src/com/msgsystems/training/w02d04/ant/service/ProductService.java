@@ -6,6 +6,5 @@ import com.msgsystems.training.w02d04.ant.model.AbstractProduct;
 public class ProductService {
 
     public void processProduct(final AbstractProduct abstractProduct) {
-        //TODO implement logic
     }
 }
