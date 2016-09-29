@@ -20,6 +20,7 @@
 
         <java.version>1.8</java.version>
         <javax.persistence.api.version>1.0.0.Final</javax.persistence.api.version>
+        <jool.version>0.9.11</jool.version>
 
         <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
     </properties>
@@ -30,6 +31,12 @@
                 <groupId>org.hibernate.javax.persistence</groupId>
                 <artifactId>hibernate-jpa-2.1-api</artifactId>
                 <version>${javax.persistence.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jool</artifactId>
+                <version>${jool.version}</version>
             </dependency>
 
             <dependency>
