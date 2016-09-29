@@ -26,39 +26,52 @@ public class ProductRepository {
     }
 
     public ProductRepository() {
+        Connection connection = null;
         try {
+            // load the H2 driver
             Class.forName("org.h2.Driver");
 
-            getConnection().prepareCall("DROP TABLE Product IF EXISTS;").execute();
-            getConnection().prepareCall("CREATE TABLE Product(id INTEGER NOT NULL, name CHAR(30), PRIMARY KEY (id))").execute();
+            connection = getConnection();
 
-            getConnection().prepareCall("INSERT INTO Product (id, name) VALUES (1, 'Dell XPS')").execute();
-            getConnection().prepareCall("INSERT INTO Product (id, name) VALUES (2, 'Asus UX530')").execute();
+            connection.prepareCall("DROP TABLE Product IF EXISTS;").execute();
+            connection.prepareCall("CREATE TABLE Product(id INTEGER NOT NULL, name CHAR(30), PRIMARY KEY (id))").execute();
+
+            connection.prepareCall("INSERT INTO Product (id, name) VALUES (1, 'Dell XPS')").execute();
+            connection.prepareCall("INSERT INTO Product (id, name) VALUES (2, 'Asus UX530')").execute();
         } catch (final Exception e) {
             e.printStackTrace();
+        } finally {
+            closeResources(connection, null, null);
         }
     }
 
     public int getCount() {
+        Connection connection = null;
         ResultSet resultSet = null;
         Statement statement = null;
+
         try {
-            statement = getConnection().createStatement();
+            connection = getConnection();
+            statement = connection.createStatement();
+
             resultSet = statement.executeQuery("SELECT count(*) FROM Product");
             resultSet.next();
             return resultSet.getInt(1);
         } catch (final SQLException ex) {
             throw new IllegalArgumentException(ex.getMessage());
         } finally {
-            closeResources(resultSet, statement);
+            closeResources(connection, resultSet, statement);
         }
     }
 
     public Product getProduct(final int id) {
+        Connection connection = null;
         ResultSet resultSet = null;
         Statement statement = null;
+
         try {
-            statement = getConnection().createStatement();
+            connection = getConnection();
+            statement = connection.createStatement();
 
             resultSet = statement.executeQuery("SELECT * FROM Product WHERE ID = " + id);
             if (resultSet.next()) {
@@ -72,7 +85,7 @@ public class ProductRepository {
         } catch (final SQLException ex) {
             throw new IllegalArgumentException(ex.getMessage());
         } finally {
-            closeResources(resultSet, statement);
+            closeResources(connection, resultSet, statement);
         }
     }
 
@@ -84,7 +97,9 @@ public class ProductRepository {
         }
     }
 
-    private void closeResources(final ResultSet resultSet, final Statement statement) {
+    private void closeResources(final Connection connection, final ResultSet resultSet, final Statement statement) {
+        Optional.ofNullable(connection)
+                .ifPresent(Unchecked.consumer(Connection::close));
         Optional.ofNullable(resultSet)
                 .ifPresent(Unchecked.consumer(ResultSet::close));
         Optional.ofNullable(statement)
