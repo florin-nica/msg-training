@@ -7,7 +7,7 @@
 
     <name>msg Systems Maven intro project</name>
     <groupId>com.msgsystems.training.w02d04</groupId>
-    <artifactId>maven-intro</artifactId>
+    <artifactId>maven-build</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <packaging>jar</packaging>
