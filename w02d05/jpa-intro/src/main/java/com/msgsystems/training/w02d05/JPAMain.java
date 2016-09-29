@@ -8,7 +8,12 @@ import com.msgsystems.training.w02d05.service.ProductService;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 
@@ -35,6 +40,8 @@ public class JPAMain {
         productCRUD();
         // storeCRUD();
 
+        criteriaAPISample();
+
         closeEntityManagerObjects();
     }
 
@@ -56,9 +63,21 @@ public class JPAMain {
         System.out.println("The updated product name is '" + savedProduct.getName() + "'");
 
         // delete the previously saved product
-        productRepository.deleteProduct(savedProduct);
+        // productRepository.deleteProduct(savedProduct);
 
         System.out.println("There is no product with the ID 1 - " + (productRepository.getProduct(1) == null));
+    }
+
+    private static void criteriaAPISample() {
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
+
+        final Root<Product> from = criteriaQuery.from(Product.class);
+        final CriteriaQuery<Product> select = criteriaQuery.select(from);
+        final TypedQuery<Product> typedQuery = entityManager.createQuery(select);
+
+        final List<Product> products = typedQuery.getResultList();
+        products.forEach(product -> System.out.println(product.getName()));
     }
 
     private static void storeCRUD() {
