@@ -28,18 +28,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.hibernate.javax.persistence</groupId>
-                <artifactId>hibernate-jpa-2.1-api</artifactId>
-                <version>${javax.persistence.api.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.jooq</groupId>
-                <artifactId>jool</artifactId>
-                <version>${jool.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2.database.version}</version>
@@ -49,6 +37,18 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>${hibernate.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>${javax.persistence.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jooq</groupId>
+                <artifactId>jool</artifactId>
+                <version>${jool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
