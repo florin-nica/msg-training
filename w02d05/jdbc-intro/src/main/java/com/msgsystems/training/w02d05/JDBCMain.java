@@ -2,8 +2,19 @@ package com.msgsystems.training.w02d05;
 
 import com.msgsystems.training.w02d05.repository.ProductRepository;
 import com.msgsystems.training.w02d05.service.ProductService;
+import org.h2.tools.Server;
 
 public class JDBCMain {
+
+    static {
+        try {
+            Server.createTcpServer();
+            Class.forName("org.h2.Driver");
+        } catch (final Exception e) {
+            e.printStackTrace();
+            System.exit(13);
+        }
+    }
 
     public static void main(final String[] args) {
         final ProductRepository productRepository = new ProductRepository();

@@ -1,27 +1,13 @@
 package com.msgsystems.training.w02d05.repository;
 
 import com.msgsystems.training.w02d05.model.Product;
-import org.h2.tools.Server;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 public class ProductRepository {
 
-    @SuppressWarnings("unused")
-    private static Server h2Server;
-
     private final EntityManager entityManager;
-
-    static {
-        try {
-            h2Server = Server.createTcpServer();
-            Class.forName("org.h2.Driver");
-        } catch (final Exception e) {
-            e.printStackTrace();
-            System.exit(13);
-        }
-    }
 
     public ProductRepository(final EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -41,7 +27,7 @@ public class ProductRepository {
 
             transaction.commit();
         } catch (final Exception ex) {
-            transaction.rollback();
+            rollbackTransaction(transaction);
         }
     }
 
@@ -55,9 +41,7 @@ public class ProductRepository {
 
             transaction.commit();
         } catch (final Exception ex) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
+            rollbackTransaction(transaction);
         }
     }
 
@@ -71,9 +55,13 @@ public class ProductRepository {
 
             transaction.commit();
         } catch (final Exception ex) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
+            rollbackTransaction(transaction);
+        }
+    }
+
+    private void rollbackTransaction(final EntityTransaction transaction) {
+        if (transaction.isActive()) {
+            transaction.rollback();
         }
     }
 }
