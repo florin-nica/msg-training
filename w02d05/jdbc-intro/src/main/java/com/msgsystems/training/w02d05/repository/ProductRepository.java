@@ -28,9 +28,6 @@ public class ProductRepository {
     public ProductRepository() {
         Connection connection = null;
         try {
-            // load the H2 driver
-            Class.forName("org.h2.Driver");
-
             connection = getConnection();
 
             connection.prepareCall("DROP TABLE Product IF EXISTS;").execute();
