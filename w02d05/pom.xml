@@ -20,7 +20,7 @@
 
         <java.version>1.8</java.version>
         <javax.persistence.api.version>1.0.0.Final</javax.persistence.api.version>
-        <jool.version>0.9.11</jool.version>
+        <jool.version>0.9.12</jool.version>
 
         <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
     </properties>
@@ -38,7 +38,7 @@
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>${hibernate.version}</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>org.hibernate.javax.persistence</groupId>
                 <artifactId>hibernate-jpa-2.1-api</artifactId>
