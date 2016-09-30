@@ -1,7 +1,6 @@
 package com.msgsystems.training.w02d05.repository;
 
 import com.msgsystems.training.w02d05.model.Product;
-import org.h2.tools.Server;
 import org.jooq.lambda.Unchecked;
 
 import java.sql.Connection;
@@ -12,18 +11,6 @@ import java.sql.Statement;
 import java.util.Optional;
 
 public class ProductRepository {
-
-    @SuppressWarnings("unused")
-    private static Server H2_SERVER;
-
-    static {
-        try {
-            H2_SERVER = Server.createTcpServer();
-        } catch (final SQLException e) {
-            e.printStackTrace();
-            System.exit(13);
-        }
-    }
 
     public ProductRepository() {
         Connection connection = null;
