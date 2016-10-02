@@ -32,7 +32,7 @@
         </jar>
     </target>
 
-    <target name="main" depends="compile, jar">
+    <target name="main" depends="jar">
         <description>Main target</description>
     </target>
 </project>
