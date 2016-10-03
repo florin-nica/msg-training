@@ -13,6 +13,7 @@
 
     <modules>
         <module>w03d01</module>
+        <module>w03d02</module>
     </modules>
 
     <properties>
