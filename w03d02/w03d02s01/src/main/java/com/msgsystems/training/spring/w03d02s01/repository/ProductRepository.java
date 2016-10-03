@@ -1,6 +1,6 @@
-package com.msgsystems.training.spring.w03d01s02.repository;
+package com.msgsystems.training.spring.w03d02s01.repository;
 
-import com.msgsystems.training.spring.w03d01s02.model.Product;
+import com.msgsystems.training.spring.w03d02s01.model.Product;
 
 public class ProductRepository {
 

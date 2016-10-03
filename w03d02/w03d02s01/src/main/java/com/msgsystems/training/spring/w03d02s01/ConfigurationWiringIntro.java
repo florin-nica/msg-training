@@ -1,8 +1,8 @@
-package com.msgsystems.training.spring.w03d01s02;
+package com.msgsystems.training.spring.w03d02s01;
 
-import com.msgsystems.training.spring.w03d01s02.config.AppContextConfig;
-import com.msgsystems.training.spring.w03d01s02.model.Product;
-import com.msgsystems.training.spring.w03d01s02.service.ProductService;
+import com.msgsystems.training.spring.w03d02s01.config.AppContextConfig;
+import com.msgsystems.training.spring.w03d02s01.model.Product;
+import com.msgsystems.training.spring.w03d02s01.service.ProductService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

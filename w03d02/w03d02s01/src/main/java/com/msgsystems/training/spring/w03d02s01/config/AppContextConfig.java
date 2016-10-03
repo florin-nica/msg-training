@@ -1,7 +1,7 @@
-package com.msgsystems.training.spring.w03d01s02.config;
+package com.msgsystems.training.spring.w03d02s01.config;
 
-import com.msgsystems.training.spring.w03d01s02.repository.ProductRepository;
-import com.msgsystems.training.spring.w03d01s02.service.ProductService;
+import com.msgsystems.training.spring.w03d02s01.repository.ProductRepository;
+import com.msgsystems.training.spring.w03d02s01.service.ProductService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
