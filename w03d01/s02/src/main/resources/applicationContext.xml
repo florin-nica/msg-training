@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-    <bean id="helloSpring" class="com.msgsystems.training.spring.w03d01.s02.service.ProductService"
+    <bean id="productService" class="com.msgsystems.training.spring.w03d01.s02.service.ProductService"
           c:productRepository-ref="productRepository" c:secondRepo-ref="productRepository"
     />
 
