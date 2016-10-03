@@ -11,6 +11,20 @@
 
     <packaging>pom</packaging>
 
+    <!--
+        Useful Maven commands
+
+            Display dependency updates                  mvn versions:display-dependency-updates
+            Display plugin updates                      mvn versions:display-plugin-updates
+            Display dependency tree                     mvn dependency:tree -Ddetail
+            Display dependency list                     mvn dependency:list
+            Display effective POM                       mvn help:effective-pom
+            Display project settings                    mvn help:effective-settings
+            Display system and environment variables    mvn help:system
+            Display build classpath                     mvn dependency:build-classpath
+    -->
+
+    <!-- Maven parallel builds - mvn -T 6 clean package -->
     <modules>
         <module>w03d01</module>
         <module>w03d02</module>
