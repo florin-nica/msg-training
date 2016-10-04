@@ -11,7 +11,15 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
+    public void init() {
+        System.out.println("Do stuff on init");
+    }
+
     public Product getProduct(final int id) {
         return productRepository.get(id);
+    }
+
+    public void destroy() {
+        System.err.println("Do stuff on destroy");
     }
 }

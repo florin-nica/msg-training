@@ -8,4 +8,23 @@
 
     <!-- implies the usage of context:annotation-config tag -->
     <context:component-scan base-package="com.msgsystems.training.spring.w03d02s02"/>
+
+    <bean id="productRepository" class="com.msgsystems.training.spring.w03d02s02.repository.ProductRepository">
+        <property name="products">
+            <list>
+                <!-- inline beans -->
+                <bean id="first" class="com.msgsystems.training.spring.w03d02s02.model.Product">
+                    <property name="name" value="something"/>
+                    <property name="id" value="2"/>
+                </bean>
+
+                <bean id="second" class="com.msgsystems.training.spring.w03d02s02.model.Product">
+                    <property name="name" value="another thing"/>
+                    <property name="id" value="5"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <context:property-placeholder location="application.properties"/>
 </beans>
