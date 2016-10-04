@@ -1,7 +1,7 @@
 package com.msgsystems.training.spring.w03d02s02;
 
+import com.msgsystems.training.spring.w03d02s02.controller.ProductController;
 import com.msgsystems.training.spring.w03d02s02.model.Product;
-import com.msgsystems.training.spring.w03d02s02.service.ProductService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,9 +12,9 @@ public class AutoWiringIntro {
 
     public static void main(String[] args) {
         final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        final ProductService productService = applicationContext.getBean(ProductService.class);
+        final ProductController productController = applicationContext.getBean(ProductController.class);
 
-        final Product product = productService.getProduct(23);
+        final Product product = productController.getProduct(23);
         System.out.println(product.getName());
     }
 }
