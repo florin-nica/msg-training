@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="serializingService" class="com.msg.springtraining.myproject.service.SerializingService">
+    </bean>
+
+    <bean id="fileService" class="com.msg.springtraining.myproject.service.FilesService">
+    </bean>
+
+    <bean id="productRepository" class="com.msg.springtraining.myproject.repository.ProductRepository">
+        <constructor-arg ref="fileService"/>
+        <constructor-arg value="products.csv"/>
+    </bean>
+
+    <bean id="storeRepository" class="com.msg.springtraining.myproject.repository.StoreRepository">
+        <constructor-arg ref="fileService"/>
+        <constructor-arg value="stores.csv"/>
+        <constructor-arg ref="productRepository"/>
+    </bean>
+
+    <bean id="productService" class="com.msg.springtraining.myproject.service.ProductService">
+        <constructor-arg ref="productRepository"/>
+    </bean>
+
+    <bean id="storeService" class="com.msg.springtraining.myproject.service.StoreService">
+        <constructor-arg ref="storeRepository"/>
+    </bean>
+
+
+</beans>
