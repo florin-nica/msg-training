@@ -2,7 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:c="http://www.springframework.org/schema/c"
-       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
@@ -10,12 +9,5 @@
           c:productRepository-ref="productRepository" c:secondRepo-ref="productRepository"
     />
 
-    <!-- for references to other beans -->
-    <!-- specifying by parameter index - c:_<index>-ref -->
-    <!-- specifying by parameter name - c:<parameter-name>-ref -->
-
-    <!-- for references to values -> without '-ref' -->
-
-    <bean id="productRepository" class="com.msgsystems.training.spring.w03d01s02.repository.ProductRepository"
-          p:repositoryName="something"/>
+    <import resource="applicationContext-dataAccess.xml"/>
 </beans>
